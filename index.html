@@ -194,6 +194,65 @@
     </footer>
     
     <script src="script.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCiwtzA6Ng_37o_6hkY8eFtdNQR02AAU",
+    authDomain: "visitors-history.firebaseapp.com",
+    databaseURL: "https://visitors-history-default-rtdb.firebaseio.com",
+    projectId: "visitors-history",
+    storageBucket: "visitors-history.firebasestorage.app",
+    messagingSenderId: "44842206996",
+    appId: "1:44842206996:web:29f17492422217b1e56401"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+
+  async function trackHR() {
+    // Check if tracked already to prevent duplicates
+    if (localStorage.getItem('tracked_visit')) return;
+
+    try {
+      // Get IP Address
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+
+      // Get current date and time
+      const now = new Date();
+      const dateTime = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+      // Push to your "Visitors history" database
+      await database.ref('visitor_logs').push({
+        ip: data.ip,
+        visit_time: dateTime,
+        device: navigator.userAgent
+      });
+
+      // Mark as tracked
+      localStorage.setItem('tracked_visit', 'true');
+    } catch (e) {
+      // Fails silently if blocked by extensions
+    }
+  }
+
+  // Admin View check: If URL is yourlink.com/?owner=true
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('owner') === 'true') {
+    database.ref('visitor_logs').once('value', (snapshot) => {
+      console.log("--- HR VISITOR LOGS ---");
+      console.table(snapshot.val());
+      alert("Check the browser console (F12) to see who viewed your portfolio.");
+    });
+  } else {
+    trackHR();
+  }
+</script>
+
 </body>
 
 </html>
