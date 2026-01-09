@@ -1,159 +1,105 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* ================================
+   1. RESET & BASE STYLES
+================================ */
+* {
     margin: 0;
-    text-align: center;
-}
-
-.container {
-    max-width: 600px;
-    padding: 20px;
-    margin: 20px;
-}
-
-.message-box {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-}
-
-h1 {
-    color: #007bff;
-    margin-bottom: 20px;
-    font-size: 1.8em;
-}
-
-.instruction-text {
-    background-color: #e9f7ff;
-    border-left: 5px solid #007bff;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 4px;
-    text-align: left;
-}
-
-.instruction-text p {
-    margin: 8px 0;
-    line-height: 1.5;
-}
-
-.wait-note {
-    color: #dc3545; /* Red color for emphasis */
-    font-weight: bold;
-    margin-top: 15px !important;
-}
-
-#viewProjectButton {
-    background-color: #28a745; /* Green button */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    cursor: pointer;
-    margin-top: 25px;
-    transition: background-color 0.3s, transform 0.2s;
-    text-transform: uppercase;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
-}
-
-#viewProjectButton:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
-}
-
-#viewProjectButton:active {
-    background-color: #1e7e34;
-    transform: translateY(0);
-}
-
-/* -------------------------------------------
-   1. Base Styles and Typography (Mobile First)
-   ------------------------------------------- */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    /* Center content vertically and horizontally */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    text-align: center;
-    padding: 10px; /* Small padding for edge clearance on all devices */
+    padding: 0;
     box-sizing: border-box;
 }
 
-.container {
-    width: 100%; /* Take full width of the viewport */
-    max-width: 900px; /* Allow it to grow on large screens, but limit it */
-    padding: 0;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
 }
 
+/* ================================
+   2. MAIN CONTAINER
+================================ */
+.container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ================================
+   3. MESSAGE / PROJECT BOX
+================================ */
 .message-box {
     background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px; /* Reduced padding for mobile screens */
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+    text-align: center;
 }
 
+/* Highlight for instruction box */
+.instruction-box {
+    border: 2px solid #007bff;
+    background: linear-gradient(135deg, #ffffff, #f0f8ff);
+}
+
+/* ================================
+   4. HEADINGS & TEXT
+================================ */
 h1 {
-    color: #007bff;
+    font-size: 1.6rem;
     margin-bottom: 15px;
-    font-size: 1.5em; /* Smaller font on mobile */
+    color: #007bff;
 }
 
-/* -------------------------------------------
-   2. Instruction Box Styling
-   ------------------------------------------- */
 .instruction-text {
     background-color: #e9f7ff;
     border-left: 5px solid #007bff;
     padding: 15px;
-    margin: 15px 0;
-    border-radius: 4px;
+    border-radius: 6px;
     text-align: left;
-    font-size: 0.95em;
+    font-size: 0.95rem;
 }
 
 .instruction-text p {
-    margin: 6px 0;
-    line-height: 1.4;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
 .wait-note {
     color: #dc3545;
     font-weight: bold;
-    margin-top: 10px !important;
 }
 
-/* -------------------------------------------
-   3. Button Styling
-   ------------------------------------------- */
+/* Project description text */
+.project-desc {
+    margin: 10px 0 20px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* ================================
+   5. BUTTON STYLES
+================================ */
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Trip Express button */
 #viewProjectButton {
     background-color: #28a745;
-    color: white;
-    width: 90%; /* Button takes up most of the width on mobile */
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.0em;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s, transform 0.2s;
-    text-transform: uppercase;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    color: #ffffff;
+    box-shadow: 0 5px 12px rgba(40, 167, 69, 0.3);
 }
 
 #viewProjectButton:hover {
@@ -161,40 +107,48 @@ h1 {
     transform: translateY(-2px);
 }
 
-#viewProjectButton:active {
-    background-color: #1e7e34;
-    transform: translateY(0);
+/* Button group for Project 2 */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* -------------------------------------------
-   4. Media Queries for Tablet and Desktop Views
-   ------------------------------------------- */
+.button-group button {
+    background-color: #17a2b8;
+    color: white;
+    box-shadow: 0 5px 12px rgba(23, 162, 184, 0.3);
+}
 
-/* Tablet View (Screens wider than 600px) */
+.button-group button:hover {
+    background-color: #138496;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   6. RESPONSIVE DESIGN
+================================ */
 @media (min-width: 600px) {
-    .message-box {
-        padding: 30px; /* Restore desktop padding */
-    }
-
     h1 {
-        font-size: 1.8em; /* Increase header size */
+        font-size: 1.8rem;
     }
 
-    .instruction-text {
-        padding: 20px;
-        font-size: 1.0em;
+    .message-box {
+        padding: 30px;
     }
-    
-    #viewProjectButton {
-        width: auto; /* Button size adjusts naturally */
-        padding: 12px 40px;
-        font-size: 1.1em;
+
+    .button-group {
+        flex-direction: row;
+        justify-content: center;
     }
 }
 
-/* Desktop View (Screens wider than 900px - optional for further polish) */
 @media (min-width: 900px) {
-    .message-box {
+    body {
         padding: 40px;
+    }
+
+    .message-box {
+        padding: 35px;
     }
 }
