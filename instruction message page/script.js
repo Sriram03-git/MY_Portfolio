@@ -1,14 +1,23 @@
-const projectLink = "https://trip-project-0ufy.onrender.com/"; 
+// Project URLs
+const tripProjectLink = "https://trip-project-0ufy.onrender.com/";
+const seekerLink = "https://job-submission.onrender.com/seeker.html";
+const recruiterLink = "https://job-submission.onrender.com/recruiter.html";
 
-document.addEventListener('DOMContentLoaded', function() {
-    const viewProjectButton = document.getElementById('viewProjectButton');
-    
-    viewProjectButton.addEventListener('click', function() {
-        // Immediately open the link in a new tab
-        window.open(projectLink, '_blank');
-        
-        // Optionally: You can close this page after the click
-        // window.close(); 
-    });
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("viewProjectButton")
+        .addEventListener("click", () => {
+            window.open(tripProjectLink, "_blank");
+        });
+
+    document.getElementById("seekerBtn")
+        .addEventListener("click", () => {
+            window.open(seekerLink, "_blank");
+        });
+
+    document.getElementById("recruiterBtn")
+        .addEventListener("click", () => {
+            window.open(recruiterLink, "_blank");
+        });
 
 });
