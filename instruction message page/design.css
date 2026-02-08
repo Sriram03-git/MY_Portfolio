@@ -2,153 +2,209 @@
    1. RESET & BASE STYLES
 ================================ */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 /* ================================
    2. MAIN CONTAINER
 ================================ */
 .container {
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 /* ================================
    3. MESSAGE / PROJECT BOX
 ================================ */
 .message-box {
-    background-color: #ffffff;
-    border-radius: 14px;
-    padding: 25px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e0e0e0;
-    text-align: center;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  overflow: hidden; /* Ensures images don't overlap rounded corners */
+}
+
+/* Hover effect for the whole card */
+.message-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 /* Highlight for instruction box */
 .instruction-box {
-    border: 2px solid #007bff;
-    background: linear-gradient(135deg, #ffffff, #f0f8ff);
+  border: 2px solid #007bff;
+  background: linear-gradient(135deg, #ffffff, #f0f8ff);
 }
 
 /* ================================
-   4. HEADINGS & TEXT
+   4. NEW: PROJECT IMAGE STYLES
+================================ */
+.project-img-container {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid #f0f0f0;
+  background-color: #f9f9f9;
+}
+
+/* Slider Wrapper for horizontal scrolling */
+.slider-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps aspect ratio while filling space */
+  display: block;
+  transition: transform 0.5s ease;
+  min-width: 100%; /* Ensures each image takes full width of container */
+}
+
+/* Zoom effect on image when card is hovered */
+.message-box:hover .project-img {
+  transform: scale(1.06);
+}
+
+/* ================================
+   5. HEADINGS & TEXT
 ================================ */
 h1 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    color: #007bff;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #007bff;
 }
 
 .instruction-text {
-    background-color: #e9f7ff;
-    border-left: 5px solid #007bff;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: left;
-    font-size: 0.95rem;
+  background-color: #e9f7ff;
+  border-left: 5px solid #007bff;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 0.95rem;
 }
 
 .instruction-text p {
-    margin-bottom: 10px;
-    line-height: 1.5;
+  margin-bottom: 10px;
+  line-height: 1.5;
 }
 
 .wait-note {
-    color: #dc3545;
-    font-weight: bold;
+  color: #dc3545;
+  font-weight: bold;
 }
 
 /* Project description text */
 .project-desc {
-    margin: 10px 0 20px;
-    color: #555;
-    font-size: 0.95rem;
+  margin: 10px 0 20px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 /* ================================
-   5. BUTTON STYLES
+   6. BUTTON STYLES
 ================================ */
 button {
-    border: none;
-    border-radius: 10px;
-    padding: 12px 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.25s ease;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 /* Trip Express button */
 #viewProjectButton {
-    background-color: #28a745;
-    color: #ffffff;
-    box-shadow: 0 5px 12px rgba(40, 167, 69, 0.3);
+  background-color: #28a745;
+  color: #ffffff;
+  box-shadow: 0 5px 12px rgba(40, 167, 69, 0.3);
 }
 
 #viewProjectButton:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(40, 167, 69, 0.4);
 }
 
 /* Button group for Project 2 */
 .button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .button-group button {
-    background-color: #17a2b8;
-    color: white;
-    box-shadow: 0 5px 12px rgba(23, 162, 184, 0.3);
+  background-color: #17a2b8;
+  color: white;
+  box-shadow: 0 5px 12px rgba(23, 162, 184, 0.3);
 }
 
 .button-group button:hover {
-    background-color: #138496;
-    transform: translateY(-2px);
+  background-color: #138496;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(23, 162, 184, 0.4);
 }
 
 /* ================================
-   6. RESPONSIVE DESIGN
+   7. RESPONSIVE DESIGN
 ================================ */
 @media (min-width: 600px) {
-    h1 {
-        font-size: 1.8rem;
-    }
+  h1 {
+    font-size: 1.8rem;
+  }
 
-    .message-box {
-        padding: 30px;
-    }
+  .message-box {
+    padding: 30px;
+  }
 
-    .button-group {
-        flex-direction: row;
-        justify-content: center;
-    }
+  .button-group {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .project-img-container {
+    height: 280px;
+  }
 }
 
 @media (min-width: 900px) {
-    body {
-        padding: 40px;
-    }
+  body {
+    padding: 40px;
+  }
 
-    .message-box {
-        padding: 35px;
-    }
+  .message-box {
+    padding: 35px;
+  }
+
+  .container {
+    gap: 40px;
+  }
 }

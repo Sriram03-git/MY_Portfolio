@@ -1,66 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Projects</title>
-    <link rel="stylesheet" href="design.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="design.css" />
+  </head>
+  <body>
     <div class="container">
-
-        <!-- =======================
-             GLOBAL INSTRUCTION BOX
-        ======================== -->
-        <div class="message-box instruction-box">
-            <h1>🌐 Project Access Notice</h1>
-
-            <div class="instruction-text">
-                <p>
-                    If the <b>Server is Started</b>, the project will load immediately.
-                </p>
-                <p>
-                    If the <b>Server is Sleeping</b> (Render free tier), it may take up to
-                    <b>1 minute</b> to start.
-                </p>
-                <p class="wait-note">
-                    *Please wait patiently if the page takes time to load.*
-                </p>
-            </div>
+      <div class="message-box instruction-box">
+        <h1>🌐 Project Access Notice</h1>
+        <div class="instruction-text">
+          <p>
+            If the <b>Server is Started</b>, the project will load immediately.
+          </p>
+          <p>
+            If the <b>Server is Sleeping</b> (Render free tier), it may take up
+            to 1 minute to start.
+          </p>
+          <p class="wait-note">
+            *Please wait patiently if the page takes time to load.*
+          </p>
         </div>
+      </div>
 
-        <!-- =======================
-             PROJECT 1
-        ======================== -->
-        <div class="message-box">
-            <h1>🌍 Trip Express Splitter</h1>
-
-            <p class="project-desc">
-                Split travel expenses easily and fairly among friends.
-            </p>
-
-            <button id="viewProjectButton">View Project</button>
+      <div class="message-box">
+        <div class="project-img-container">
+          <div id="sliderWrapper" class="slider-wrapper"></div>
         </div>
+        <h1>🌍 Trip Express Splitter</h1>
+        <p class="project-desc">
+          Split travel expenses easily and fairly among friends.
+        </p>
+        <button id="viewProjectButton">View Project</button>
+      </div>
 
-        <!-- =======================
-             PROJECT 2
-        ======================== -->
-        <div class="message-box">
-            <h1>💼 Job Application Tracking API</h1>
-
-            <p class="project-desc">
-                Manage job applications for seekers and recruiters.
-            </p>
-
-            <div class="button-group">
-                <button id="seekerBtn">Seeker Page</button>
-                <button id="recruiterBtn">Recruiter Page</button>
-            </div>
+      <div class="message-box">
+        <div class="project-img-container">
+          <div id="sliderWrapper2" class="slider-wrapper"></div>
         </div>
-
+        <h1>💼 Job Application Tracking API</h1>
+        <p class="project-desc">
+          Manage job applications for seekers and recruiters.
+        </p>
+        <div class="button-group">
+          <button id="seekerBtn">Seeker Page</button>
+          <button id="recruiterBtn">Recruiter Page</button>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
