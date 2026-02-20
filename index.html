@@ -195,65 +195,49 @@
     </footer>
     
     <script src="script.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-<script>
-/** * Firebase Security Configuration 
- * Encoded to prevent plain-text reading of sensitive credentials
- */
-var _0x5a12=["\x61\x70\x69\x4B\x65\x79","\x41\x49\x7a\x61\x53\x79\x43\x43\x69\x77\x74\x7a\x41\x36\x4e\x67\x5f\x33\x37\x6f\x5f\x36\x68\x6b\x59\x38\x65\x46\x74\x64\x4e\x51\x52\x30\x32\x41\x41\x55","\x64\x61\x74\x61\x62\x61\x73\x65\x55\x52\x4c","\x68\x74\x74\x70\x73\x3a\x2f\x2f\x76\x69\x73\x69\x74\x6f\x72\x73\x2d\x68\x69\x73\x74\x6f\x72\x79\x2d\x64\x65\x66\x61\x75\x6c\x74\x2d\x72\x74\x64\x62\x2e\x66\x69\x72\x65\x62\x61\x73\x65\x69\x6f\x2e\x63\x6f\x6d"];
+    <script>
+    var _0x4f21 = ["\x61\x70\x69\x4B\x65\x79", "\x41\x49\x7a\x61\x53\x79\x43\x43\x69\x77\x74\x7a\x41\x36\x4e\x67\x5f\x33\x37\x6f\x5f\x36\x68\x6b\x59\x38\x65\x46\x74\x64\x4e\x51\x52\x30\x32\x41\x41\x55", "\x64\x61\x74\x61\x62\x61\x73\x65\x55\x52\x4c", "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x76\x69\x73\x69\x74\x6f\x72\x73\x2d\x68\x69\x73\x74\x6f\x72\x79\x2d\x64\x65\x66\x61\x75\x6c\x74\x2d\x72\x74\x64\x62\x2e\x66\x69\x72\x65\x62\x61\x73\x65\x69\x6f\x2e\x63\x6f\x6d"];
 
-const firebaseConfig = {
-  apiKey: _0x5a12[1],
-  authDomain: "visitors-history.firebaseapp.com",
-  databaseURL: _0x5a12[3],
-  projectId: "visitors-history",
-  storageBucket: "visitors-history.firebasestorage.app",
-  messagingSenderId: "44842206996",
-  appId: "1:44842206996:web:29f17492422217b1e56401"
-};
+    const firebaseConfig = {
+      apiKey: _0x4f21[1],
+      authDomain: "visitors-history.firebaseapp.com",
+      databaseURL: _0x4f21[3],
+      projectId: "visitors-history",
+      storageBucket: "visitors-history.firebasestorage.app",
+      messagingSenderId: "44842206996",
+      appId: "1:44842206996:web:29f17492422217b1e56401"
+    };
 
-// Initialize connection
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-async function initTracker() {
-  try {
-    // Check local session to reduce redundant database writes
-    if (localStorage.getItem('_session_active')) return;
+    async function initTracker() {
+      try {
+        const r = await fetch('https://api.ipify.org?format=json');
+        const d = await r.json();
+        const id = d.ip.replace(/\./g, '_'); 
+        const now = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
-    const r = await fetch('https://api.ipify.org?format=json');
-    const d = await r.json();
-    
-    // Sanitize IP to use as a unique database key
-    const id = d.ip.replace(/\./g, '_'); 
-    const now = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+        await db.ref('logs/' + id).update({
+          last_visit: now,
+          metadata: navigator.userAgent
+        });
+      } catch (e) {}
+    }
 
-    // Store data under IP-based node to prevent duplicates
-    await db.ref('logs/' + id).set({
-      last_visit: now,
-      metadata: navigator.userAgent
-    });
-
-    localStorage.setItem('_session_active', 'true');
-  } catch (e) {
-    // Silent fail to ensure no UI disruption
-  }
-}
-
-// Access restricted view for project owner
-const u = new URLSearchParams(window.location.search);
-if (u.get('view') === 'owner') {
-  db.ref('logs').once('value', (s) => {
-    console.log("Session Analytics Data:");
-    console.table(s.val());
-  });
-} else {
-  initTracker();
-}
-</script>
-
+    const u = new URLSearchParams(window.location.search);
+    if (u.get('view') === 'owner') {
+      db.ref('logs').once('value', (s) => {
+        console.table(s.val());
+      });
+    } else {
+      initTracker();
+    }
+    </script>
+</body>
 </body>
 
 </html>
