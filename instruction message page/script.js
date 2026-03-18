@@ -22,7 +22,7 @@ const jobProjectImages = [
 ];
 
 // Project URLs
-const tripProjectLink = "https://trip-project-y8e3.onrender.com";
+const tripProjectLink = "https://trip-project-1hmc.onrender.com/";
 const seekerLink = "https://job-submission.onrender.com/seeker.html";
 const recruiterLink = "https://job-submission.onrender.com/recruiter.html";
 
